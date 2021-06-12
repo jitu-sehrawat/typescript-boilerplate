@@ -1,0 +1,15 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo '🏗️👷 Checking Formatting, Linting, Types before committing'
+
+# Check Test Cases
+npm run test ||
+(
+        echo '🤢🤮🤢🤮 Its FOKING RAW - Your changes are code breaking. 🤢🤮🤢🤮
+                Test Cases Check Failed. Run npm run test, add changes and try passing all cases.';
+        false;
+)
+
+# If everything passes... Now we can Push
+echo '✅✅✅✅ You win this time... I am pushing this now. ✅✅✅✅'
